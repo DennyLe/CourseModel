@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 23, 2018 3:32:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="courses" name="ru.course.web.entity.PassingCourse" optimistic-lock="version" table="passing_course">
+    <id name="couPassId" type="java.lang.Integer">
+      <column name="cou_pass_id"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="ru.course.web.entity.Course" fetch="join" name="course">
+      <column name="cou_id" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="ru.course.web.entity.Student" fetch="join" name="student">
+      <column name="stud_id" not-null="true"/>
+    </many-to-one>
+    <property name="avgMark" type="java.lang.Float">
+      <column name="avg_mark" precision="12" scale="0"/>
+    </property>
+    <property name="marksCount" type="java.lang.Integer">
+      <column name="marks_count"/>
+    </property>
+    <property name="examMark" type="java.lang.Integer">
+      <column name="exam_mark"/>
+    </property>
+  </class>
+</hibernate-mapping>

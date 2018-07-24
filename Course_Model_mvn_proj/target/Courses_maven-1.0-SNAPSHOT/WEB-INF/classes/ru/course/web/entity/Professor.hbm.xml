@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 23, 2018 3:32:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="courses" name="ru.course.web.entity.Professor" optimistic-lock="version" table="professor">
+    <id name="profId" type="java.lang.Integer">
+      <column name="prof_id"/>
+      <generator class="identity"/>
+    </id>
+    <property name="name" type="string">
+      <column length="50" name="name" not-null="true"/>
+    </property>
+    <property name="address" type="string">
+      <column length="50" name="address" not-null="true"/>
+    </property>
+    <property name="telephone" type="string">
+      <column length="12" name="telephone"/>
+    </property>
+    <property name="payment" type="java.lang.Float">
+      <column name="payment" precision="12" scale="0"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="courses" table="course">
+      <key>
+        <column name="lecturer_id"/>
+      </key>
+      <one-to-many class="ru.course.web.entity.Course"/>
+    </set>
+  </class>
+</hibernate-mapping>
